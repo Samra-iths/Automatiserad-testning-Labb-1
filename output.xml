@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.7 on win32)" generated="2024-02-24T19:41:11.243410" rpa="false" schemaversion="5">
+<suite id="s1" name="Labb-1" source="C:\Users\samra\OneDrive\Desktop\Lab-1\Automatiserad-testning-Labb-1\Labb-1.robot">
+<test id="s1-t1" name="No unbooked car in the booking tabel" line="36">
+<kw name="Given The user is at home page" owner="Resources">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:11.696152" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<arg>browser=chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-02-24T19:41:11.696152" elapsed="2.233720"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:13.930872" level="INFO">Opening url 'https://rental17.infotiv.net/'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2024-02-24T19:41:13.930872" elapsed="0.420760"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>//h1[@id='questionText']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-02-24T19:41:14.352631" elapsed="0.109936"/>
+</kw>
+<tag>create user, VG_test</tag>
+<doc>Navigating the create user page</doc>
+<status status="PASS" start="2024-02-24T19:41:11.695152" elapsed="2.767415"/>
+</kw>
+<kw name="And The user sign in with her credential" owner="Resources">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:14.465566" level="INFO">Typing text 'sam123@gmail.com' into text field '//input[@id='email']'.</msg>
+<arg>//input[@id='email']</arg>
+<arg>${userName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-02-24T19:41:14.464568" elapsed="0.223871"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:14.689438" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg time="2024-02-24T19:41:14.750403" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>//input[@id='password']</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-02-24T19:41:14.688439" elapsed="0.134922"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:14.824361" level="INFO">Clicking button '//button[@id='login']'.</msg>
+<arg>//button[@id='login']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-02-24T19:41:14.824361" elapsed="0.271845"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<tag>Log in</tag>
+<tag>VG_test</tag>
+<doc>Entering users credential</doc>
+<status status="PASS" start="2024-02-24T19:41:14.463567" elapsed="0.632639"/>
+</kw>
+<kw name="When The User Goes On My Page" owner="Resources">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:15.098205" level="INFO">Clicking button '//button[@id="mypage"]'.</msg>
+<arg>//button[@id="mypage"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.098205" elapsed="0.166908"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>//h1[@id="historyText"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.266118" elapsed="0.045965"/>
+</kw>
+<tag>homepage</tag>
+<tag>VG_test</tag>
+<doc>Navigating to homepage</doc>
+<status status="PASS" start="2024-02-24T19:41:15.097216" elapsed="0.214867"/>
+</kw>
+<kw name="Then Only The Booked Info Is Shown" owner="Resources">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-02-24T19:41:15.313082" level="INFO">@{actual} = [ ]</msg>
+<var>@{actual}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.313082" elapsed="0.000000"/>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:15.327075" level="INFO">${table} = &lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_48")&gt;</msg>
+<var>${table}</var>
+<arg>css:.orderTable</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.313082" elapsed="0.013993"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-02-24T19:41:15.340069" level="INFO">${bookingTabel} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_52")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement...</msg>
+<var>${bookingTabel}</var>
+<arg>css:.orderTDg</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.327075" elapsed="0.012994"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.341066" elapsed="0.020989"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_52")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.341066" elapsed="0.020989"/>
+</iter>
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.362055" elapsed="0.015989"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_53")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.362055" elapsed="0.015989"/>
+</iter>
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.379046" elapsed="0.012990"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_54")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.378044" elapsed="0.014992"/>
+</iter>
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.393036" elapsed="0.014992"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_55")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.393036" elapsed="0.014992"/>
+</iter>
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.409027" elapsed="0.012992"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_56")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.409027" elapsed="0.013994"/>
+</iter>
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.423021" elapsed="0.014991"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_57")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.423021" elapsed="0.014991"/>
+</iter>
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.438012" elapsed="0.015992"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_58")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.438012" elapsed="0.015992"/>
+</iter>
+<iter>
+<kw name="Append To List" owner="Collections">
+<arg>${actual}</arg>
+<arg>${booking.text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.454004" elapsed="0.013990"/>
+</kw>
+<var name="${booking}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3b24d6aaf9a97b452205c8aa58d2dbc", element="64161F677E8E3C534EAD4CC3A75881E0_element_59")&gt;</var>
+<status status="PASS" start="2024-02-24T19:41:15.454004" elapsed="0.013990"/>
+</iter>
+<var>${booking}</var>
+<value>@{bookingTabel}</value>
+<status status="PASS" start="2024-02-24T19:41:15.340069" elapsed="0.128924"/>
+</for>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="List Should Not Contain Value" owner="Collections">
+<msg time="2024-02-24T19:41:15.468993" level="INFO">False</msg>
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the ``value`` is found from ``list``.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.468993" elapsed="0.000000"/>
+</kw>
+<msg time="2024-02-24T19:41:15.469992" level="INFO">${result} = True</msg>
+<var>${result}</var>
+<arg>List Should Not Contain Value</arg>
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.468993" elapsed="0.000999"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-02-24T19:41:15.469992" level="INFO">Verified: Unbooked car is not on the list of confirmed bookings</msg>
+<arg>Verified: Unbooked car is not on the list of confirmed bookings</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.469992" elapsed="0.000000"/>
+</kw>
+<arg>${result}==True</arg>
+<arg>Log</arg>
+<arg>Verified: Unbooked car is not on the list of confirmed bookings</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.469992" elapsed="0.000999"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${result}==False</arg>
+<arg>Log</arg>
+<arg>Bug: unbooked car is on list of confirmed booking</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.470991" elapsed="0.000000"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-02-24T19:41:15.470991" elapsed="2.229125"/>
+</kw>
+<tag>Negative test</tag>
+<tag>VG_test</tag>
+<doc>verify only booked cars are in the booking tabel</doc>
+<status status="PASS" start="2024-02-24T19:41:15.312083" elapsed="2.388971"/>
+</kw>
+<status status="PASS" start="2024-02-24T19:41:11.693150" elapsed="6.007904"/>
+</test>
+<status status="PASS" start="2024-02-24T19:41:11.246406" elapsed="6.456647"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Labb-1">Labb-1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
