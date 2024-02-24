@@ -26,9 +26,9 @@ ${password}    123sam
 
 The user is at home page
 
-
     [Documentation]    Navigating the create user page
     [Tags]    create user, VG_test
+
     Open Browser    browser=chrome
     Go To    ${URL}
     Wait Until Element Is Visible    //h1[@id='questionText']
@@ -54,6 +54,7 @@ The user is created and signed in
 
      [Documentation]  Verify the user is created
      [Tags]      VG_test  create  user
+
      Click Button    //button[@id='create']
      Wait Until Element Is Visible    //label[@id='welcomePhrase']
      Close Browser
@@ -82,6 +83,7 @@ The user selects the dates and the car
 
     [Documentation]  Date Selection and Car Selection
     [Tags]      VG_test  book car
+
     ${getDate}    Get Time
     ${startDate}    Get Substring  ${getDate}        0     10
     ${endDate}    Get Substring  ${getDate}        0     10
@@ -173,12 +175,13 @@ The user tries to choose a date that is in the past
 
     Input Text    (//input[@id='start'])[1]    2024-02-18
     Input Text    (//input[@id='end'])[1]      2024-02-19
-    Click Button    //button[@id='continue']
+
 
 The user get alert info about the earliest allowed date that she can choose
 
     [Documentation]  verify only allowed dates accepted
     [Tags]      VG_test  Negative test
 
+    Click Button    //button[@id='continue']
     Wait Until Element Is Visible    //h1[@id="questionText"]
     Close Browser
